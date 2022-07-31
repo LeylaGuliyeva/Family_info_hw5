@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Human {
     private String name;
     private String surname;
@@ -56,7 +58,7 @@ public class Human {
 
     @Override
     public String toString(){
-        return "Human{name='" + this.name + "', surname='" + this.surname + "', year=" + this.year + ", iq=" + this.iq +"}";
+        return "Human{name='" + this.name + "', surname='" + this.surname + "', year=" + this.year + ", iq=" + (this.iq!=0?this.iq:"null") +"}";
     }
 
 
@@ -78,5 +80,17 @@ public class Human {
         this.family=fam;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Human)) return false;
+        Human human = (Human) o;
+        return getYear() == human.getYear() && getIq() == human.getIq() && getName().equals(human.getName()) && getSurname().equals(human.getSurname()) && getFamily().equals(human.getFamily());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getSurname(), getYear(), getFamily());
+    }
 }
+
