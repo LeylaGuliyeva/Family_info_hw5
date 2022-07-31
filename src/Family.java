@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Family {
     private Human mother;
@@ -41,7 +42,7 @@ public class Family {
     public Family(Human mother,Human father) {
         this.mother=mother;
         this.father = father;
-        Human children[];
+        this.children=new Human[]{};
     }
 
 
@@ -80,5 +81,28 @@ public class Family {
         return 2+children.length+1;
     }
 
+    @Override
+    public String toString() {
+        return "Family{" +
+                "mother=" + mother +
+                ", father=" + father +
+                ", children=" + (children!=null?Arrays.toString(children):"null") +
+                ", pet=" + (pet!=null?pet:"null") +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Family)) return false;
+        Family family = (Family) o;
+        return getMother().equals(family.getMother()) && getFather().equals(family.getFather()) && Arrays.equals(getChildren(), family.getChildren()) && getPet().equals(family.getPet());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getMother(), getFather(), getPet());
+        result = 31 * result + Arrays.hashCode(getChildren());
+        return result;
+    }
 }
