@@ -18,8 +18,10 @@ public class Main {
         System.out.println(cat);
         System.out.println(Eren);
         System.out.println(fami);
+        System.out.println("Count : "+fami.countFamily());
         fami.deleteChild(0);
         System.out.println(fami);
+        System.out.println("Count : "+fami.countFamily());
         System.out.println(Samin.equals(Lala));
         System.out.println(Eren.equals(Eren));
 
