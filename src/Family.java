@@ -80,6 +80,27 @@ public class Family {
     public int countFamily(){
         return 2+children.length+1;
     }
+     public boolean deleteChild(Human child){
+        boolean result=true;
+        if(children.length==0){
+            result=false;
+        }
+        Human childrenn[]=new Human[children.length-1];
+        int count=0;
+
+        if(result){
+            while(count<children.length-1){
+                if (this.children[count].equals(child)){
+                    childrenn[count]=children[count];
+                    count+=1;
+                }
+            else{break;}}}
+        if(result){
+            child.setFamily(null);
+        }
+        this.children=childrenn;
+        return result;
+    }
 
     @Override
     public String toString() {
