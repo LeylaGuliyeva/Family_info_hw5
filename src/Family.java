@@ -59,7 +59,7 @@ public class Family {
     }
     
     public int countFamily(){
-        return 2+children.length+1;
+        return 2+children.length;
     }
     public boolean deleteChild(Human child){
         boolean result=true;
